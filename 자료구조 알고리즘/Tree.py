@@ -74,3 +74,5 @@ tree.insert_(tree.root, 13)
 print(tree.inorder_())
 print(tree.element_find(2))
 
+print('test')
+
