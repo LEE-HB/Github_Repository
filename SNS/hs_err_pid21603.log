@@ -1,0 +1,58 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x0000000100ea4c84, pid=21603, tid=28419
+#
+# JRE version: OpenJDK Runtime Environment Zulu15.36+13-CA (15.0.5+3) (build 15.0.5+3-MTS)
+# Java VM: OpenJDK 64-Bit Server VM Zulu15.36+13-CA (15.0.5+3-MTS, mixed mode, tiered, compressed oops, g1 gc, bsd-aarch64)
+# Problematic frame:
+# C  [python3.8+0x54c84]  list_traverse+0x38
+#
+# No core dump will be written. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://www.azul.com/support/
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Dfile.encoding=UTF8 -ea -Xmx1024m 
+
+Host: MacBookPro18,1 arm64 1 MHz, 10 cores, 16G, Darwin 21.3.0
+Time: Sat Feb 26 14:47:20 2022 KST elapsed time: 99.814589 seconds (0d 0h 1m 39s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000121884000):  JavaThread "Python Reference Queue" daemon [_thread_in_native, id=28419, stack(0x000000028fa70000,0x000000028fc73000)]
+
+Stack: [0x000000028fa70000,0x000000028fc73000],  sp=0x000000028fc72720,  free space=2057k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [python3.8+0x54c84]  list_traverse+0x38
+C  [python3.8+0x1bbb0c]  collect+0x240
+C  [python3.8+0x1bcf4c]  PyGC_Collect+0x9c
+C  [_jpype.cpython-38-darwin.so+0x1cf6c]  _ZN19JPGarbageCollection9triggeredEv+0x38
+C  [_jpype.cpython-38-darwin.so+0x29598]  Java_org_jpype_ref_JPypeReferenceNative_wake+0x1c
+J 4023  org.jpype.ref.JPypeReferenceNative.wake()V (0 bytes) @ 0x00000002b1416dc0 [0x00000002b1416d40+0x0000000000000080]
+C  0x000000028db70bea
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+J 4023  org.jpype.ref.JPypeReferenceNative.wake()V (0 bytes) @ 0x00000002b1416dc4 [0x00000002b1416d40+0x0000000000000084]
+j  org.jpype.ref.JPypeReferenceQueue$Worker.run()V+42
+j  java.lang.Thread.run()V+11 java.base@15.0.5
+v  ~StubRoutines::call_stub
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 2 (SEGV_ACCERR), si_addr: 0x000000016cfbb070
+
+Register to memory mapping:
+
+ x0=0x000000016cfbd4c0 is pointing into the stack for thread: 0x000000014178f600
+ x1=0x000000010100cd14: visit_decref+0 in /Users/bombom/miniforge3/envs/SNS_project/bin/python3.8 at 0x0000000100e50000
+ x2=0x000000016cfbd4c0 is pointing into the stack for thread: 0x000000014178f600
+ x3=0x0 is NULL
+ x4=0x0000000000007003 is an unknown value
+ x5=0x0 is NULL
+ x6=0x0000000000000001 is an unknown value
+ x7=0x000000000ee6b280 is an unknown value
+ x8=
